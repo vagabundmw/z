@@ -218,7 +218,9 @@ _z() {
     fi
 }
 
-alias ${_Z_CMD:-z}='_z 2>&1'
+z() {
+    _z "$@" 2>&1 || cd "$@" || echo "Cannot jump to directory \"$@\"" > /dev/stderr
+}
 
 [ "$_Z_NO_RESOLVE_SYMLINKS" ] || _Z_RESOLVE_SYMLINKS="-P"
 

@@ -219,7 +219,7 @@ _z() {
 }
 
 z() {
-    _z "$@" 2>&1 || cd "$@" || echo "Cannot jump to directory \"$@\"" > /dev/stderr
+    _z "$@" 2>&1 || cd "$@" 2> /dev/null || echo "Cannot jump to directory \"$@\"" > /dev/stderr
 }
 
 [ "$_Z_NO_RESOLVE_SYMLINKS" ] || _Z_RESOLVE_SYMLINKS="-P"
